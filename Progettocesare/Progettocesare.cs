@@ -21,7 +21,10 @@ namespace Progettocesare
         private void button1_Click(object sender, EventArgs e)
         {
             string stringa = txt_stringa.Text;
-            int chiave = int.Parse(txt.stringa2.Text);
+            string risultato = "";
+            int chiave = 0;
+            chiave = chiave % 26;
+
 
             if (string.IsNullOrEmpty(stringa))
             {
@@ -31,17 +34,27 @@ namespace Progettocesare
 
             else
             {
-                char[] risultato = stringa.ToCharArray();
                 for (int i = 0; i < stringa.Length; i++)
                 {
-                    char stringa = txt_stringa[i];
+                    char carattere = stringa[i];
 
-                    if (stringa >= 'A' && stringa <= 'Z')
+                    if (carattere >= 'A' && carattere <= 'Z')
                     {
-                        char carattere = (char)(carattere + chiave);
+                        char carattereModificato = (char)(((carattere - 'A' + chiave) % 26) + 'A');
+                        risultato += carattereModificato; ;
+                    }
+                    else if (carattere >= 'a' && carattere <= 'z')
+                    {
+                        char carattereModificato = (char)(((carattere - 'a' + chiave) % 26) + 'a');
+                        risultato += carattereModificato;
+                    }
+                    else
+                    {
+                        risultato += carattere;
                     }
                 }
             }
+        }
 
             
 
