@@ -38,19 +38,13 @@ namespace Progettocesare
                 {
                     char carattere = stringa[i];
 
-                    if (carattere >= 'A' && carattere <= 'Z')
+                    if (char.IsUpper(carattere))
                     {
-                        char carattereModificato = (char)(((carattere - 'A' + chiave) % 26) + 'A');
-                        risultato += carattereModificato; ;
+                        carattere = (char)(((carattere - 'A' + chiave) % 26 + 26) + 'A');
                     }
-                    else if (carattere >= 'a' && carattere <= 'z')
+                    else if (char.IsLower(carattere))
                     {
-                        char carattereModificato = (char)(((carattere - 'a' + chiave) % 26) + 'a');
-                        risultato += carattereModificato;
-                    }
-                    else
-                    {
-                        risultato += carattere;
+                        carattere = (char)(((carattere - 'a' + chiave) % 26 + 26) + 'a');
                     }
                 }
             }
